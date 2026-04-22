@@ -21,7 +21,7 @@ class PhotoController extends Controller
     public function create()
     {
         // $images = Photo::all();
-        $images = DB::table('photos')->paginate(15);
+        $images = DB::table('photos')->paginate(10);
         return view('upload', compact('images'));
     }
     public function storeSingle(Request $request)
