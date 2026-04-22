@@ -7,7 +7,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     @stack('css')
 </head>
-<body>
+<body class="text-bg-dark p-3">
     <div class="container mt-5">
         @yield('content')
     </div>

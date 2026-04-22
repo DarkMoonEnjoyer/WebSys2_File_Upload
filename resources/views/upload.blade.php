@@ -13,10 +13,6 @@
             <input type="file" name="image">
             <button type="submit">Upload</button>
             </form>
-            
-            @if(session('success'))
-                <p style="color:green;">{{ session('success') }}</p>
-            @endif
         </div>
     </div>
     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -27,12 +23,15 @@
             <input type="file" name="images[]" multiple required>
             <button type="submit">Upload</button>
             </form>
-            @if(session('success'))
-                <p style="color:green;">{{ session('success') }}</p>
-            @endif
         </div>
     </div>
 </div>
+<div>
+    @if(session('success'))
+        <p style="color:green;">{{ session('success') }}</p>
+    @endif
+</div>
+<hr>
 <div class="container text-center">
     <div class="row">
         @foreach($images as $image)
@@ -40,10 +39,11 @@
             <div class="card">
                 <div class="card-body">
                     <img src="{{ asset('images/' . $image->image) }}" alt="{{ $image->image }}">
-                    <form action="{{ route('photos.destroy', $image->id) }}" method="post" style="display"inline">
+                    <p class="card-title">{{ $image->image }}</p>
+                    <form action="{{ route('photos.destroy', $image->id) }}" method="post" style="display-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
             </div>
